@@ -10,4 +10,18 @@
 # User.create!(full_name:'seeding test2', email: 'addedbyseeding2@gmail.com', password: 'password', password_confirmation: 'password', image: 'https://www.google.com/url?sa=i&source=images&cd=&ved=2ahUKEwjNy7KHhMThAhWGzY8KHU-nBh8QjRx6BAgBEAQ&url=https%3A%2F%2Fwww.google.com%2F&psig=AOvVaw2X_QZ_QZ_QZ_QZ_QZ_QZ_QZ_QZ_&ust=1589788980108724') if Rails.env.development?
 # Group.create!(owner_id: 4, name: 'seeding test group') if Rails.env.development?
 # Friendship.create!(friend_id: 3, user_id: 4) if Rails.env.development?
-Order.create!(user_id: 3, resturant_name: 'seeding test1', mealtype: 'seeding test1', menu_img: 'https://www.google.com/url?sa=i&source=images&cd=&ved=2ahUKEwjNy7KHhMThAhWGzY8KHU-nBh8QjRx6BAgBEAQ&url=https%3A%2F%2Fwww.google.com%2F&psig=AOvVaw2X_QZ_QZ_QZ_QZ_QZ_QZ_QZ_QZ_&ust=1589788980108724', status: 'pending') if Rails.env.development?
+# Order.create!(user_id: 3, resturant_name: 'seeding test1', mealtype: 'seeding test1', menu_img: 'https://www.google.com/url?sa=i&source=images&cd=&ved=2ahUKEwjNy7KHhMThAhWGzY8KHU-nBh8QjRx6BAgBEAQ&url=https%3A%2F%2Fwww.google.com%2F&psig=AOvVaw2X_QZ_QZ_QZ_QZ_QZ_QZ_QZ_QZ_&ust=1589788980108724', status: 'pending') if Rails.env.development?
+# Order.create!(user_id: 3, resturant_name: 'seeding test2', mealtype: 'seeding test2', menu_img: 'https://www.google.com/url?sa=i&source=images&cd=&ved=2ahUKEwjNy7KHhMThAhWGzY8KHU-nBh8QjRx6BAgBEAQ&url=https%3A%2F%2Fwww.google.com%2F&psig=AOvVaw2X_QZ_QZ_QZ_QZ_QZ_QZ_QZ_QZ_&ust=1589788980108724', status: 'pending') if Rails.env.development?
+
+for i in 1..10
+    User.create!(full_name:'seeding test' + i.to_s, email: 'addedbyseeding' + i.to_s + '@gmail.com', password: 'password', password_confirmation: 'password', image: 'https://www.seekpng.com/png/full/356-3562377_personal-user.png') if Rails.env.development?
+end
+
+for i in 1..10
+  Order.create!(user_id:5 , resturant_name: 'seeding test' + i.to_s, mealtype: 'seeding test' + i.to_s, menu_img: 'https://www.google.com/url?sa=i&source=images&cd=&ved=2ahUKEwjNy7KHhMThAhWGzY8KHU-nBh8QjRx6BAgBEAQ&url=https%3A%2F%2Fwww.google.com%2F&psig=AOvVaw2X_QZ_QZ_QZ_QZ_QZ_QZ_QZ_QZ_&ust=1589788980108724', status: 'pending') if Rails.env.development?
+end
+
+for i in 5..10
+    Friendship.create!(friend_id:5, user_id: i) if Rails.env.development?
+end
+
