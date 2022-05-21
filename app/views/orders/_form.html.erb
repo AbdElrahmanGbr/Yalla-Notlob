@@ -10,22 +10,21 @@
   </ul>
 </div>
 <% end %>
-<div class="row col-md-12">
-  <div class="card col-md-6  mt-5">
+<div class="row col-md-12 d-flex justify-content-around">
+  <div class="card col-md-5 mt-5">
     <div class="card-header text-center">
       <h3>
         <i class="bi bi-clipboard-plus"></i>
-        Create Order
+        Add Order
       </h3>
     </div>
     <div class="card-body">
-      <%# <form> %>
       <%= form_with model: order do |form| %>
       <div class="form-group">
         <%= form.label :'Order for', class:"col-sm-3 col-form-label" %>
         <%= form.select :mealtype, options_for_select(["Breakfast", "Launch", "Dinner", "Other"]), {}, {class: "form form-group form-control"}  %>
       </div>
-
+      <br>
       <div class="form-group">
         <%= form.label :restaurant_name %><br>
         <%= form.text_field :resturant_name, class:"form-control", placeholder: "Enter the restaurant name"%>
@@ -33,18 +32,43 @@
         <div><%= message %></div>
         <% end %>
       </div>
-
-      <div class="custom-file mt-3">
-        <%= form.label :'Choose the menu image', class:"custom-file-label" %>
-        <%= form.file_field :menu_img, class:"custom-file-input" %>
+      <br>
+      <div class="form-group">
+        <%= form.label :friend_name %><br>
+        <%= form.text_field :friend_name, class:"form-control", placeholder: "Enter the friend name"%>
+        <% order.errors.full_messages_for(:friend_name).each do |message| %>
+        <div><%= message %></div>
+        <% end %>
+        <div class="custom-file mt-3">
+          <%= form.label :'Choose the menu image', class:"custom-file-label" %>
+          <%= form.file_field :menu_img, class:"custom-file-input" %>
+        </div>
+        <br>
+        <div class="d-flex">
+          <%= form.submit class:'btn btn-primary mx-2' %>
+          <%= link_to "Back to orders", orders_path, class:'btn btn-secondary' %>
+        </div>
+        <% end %>
       </div>
-
-
-      <div>
-        <%= form.submit %>
+    </div>
+  </div>
+  <div class="card col-md-5 mt-5">
+    <div class="card-header text-center">
+      <h3>
+        <i class="bi bi-clipboard-plus"></i>
+        Friends Invited
+      </h3>
+    </div>
+    <div class="card-body">
+      <%= form_with model: order do |form| %>
+      <div class="form-group">
+        <%= form.label :friend_name %><br>
+        <%= form.text_field :friend_name, class:"form-control", placeholder: "Enter the friend name"%>
+        <% order.errors.full_messages_for(:friend_name).each do |message| %>
+        <div><%= message %></div>
+        <% end %>
       </div>
       <% end %>
-      <%# </form> %>
     </div>
   </div>
 </div>

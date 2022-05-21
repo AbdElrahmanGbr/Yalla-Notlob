@@ -1,14 +1,28 @@
 <p style="color: green"><%= notice %></p>
-
-<h1>Orders</h1>
-
-<div id="orders">
-  <% @orders.each do |order| %>
-    <%= render order %>
-    <p>
-      <%= link_to "Show this order", order %>
-    </p>
-  <% end %>
-</div>
-
-<%= link_to "New order", new_order_path %>
+<table class="table table-striped">
+  <thead>
+    <tr>
+      <th scope="col">#</th>
+      <th scope="col">Restaurant Name</th>
+      <th scope="col">Friend Name</th>
+      <th scope="col">Order for</th>
+      <th scope="col">Menu Image</th>
+      <th scope="col">Actions</th>
+    </tr>
+  </thead>
+  <tbody>
+    <% @orders.each do |order| %>
+    <tr>
+      <th scope="row"><%= order.id %></th>
+      <td><%= order.resturant_name %></td>
+      <td><%= order.friend_name %></td>
+      <td><%= order.mealtype %></td>
+      <td><%= link_to image_tag(order.menu_img), order.menu_img %></td>
+      <td>
+        <%= link_to "Edit", edit_order_path(order) %>
+        <%= link_to "Delete", order, method: :delete, data: { confirm: "Are you sure?" } %>
+      </td>
+    </tr>
+    <% end %>
+  </tbody>
+</table>
