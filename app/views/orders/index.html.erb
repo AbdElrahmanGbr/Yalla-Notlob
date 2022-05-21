@@ -4,7 +4,7 @@
     <tr>
       <th scope="col">#</th>
       <th scope="col">Restaurant Name</th>
-      <th scope="col">Friend Name</th>
+      <th scope="col">Users</th>
       <th scope="col">Order for</th>
       <th scope="col">Menu Image</th>
       <th scope="col">Actions</th>
@@ -15,7 +15,7 @@
     <tr>
       <th scope="row"><%= order.id %></th>
       <td><%= order.resturant_name %></td>
-      <td><%= order.friend_name %></td>
+      <td><%= order.user_id %></td>
       <td><%= order.mealtype %></td>
       <td><%= link_to image_tag(order.menu_img), order.menu_img %></td>
       <td>
