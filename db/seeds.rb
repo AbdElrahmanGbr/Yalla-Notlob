@@ -25,9 +25,9 @@
 #     Friendship.create!(friend_id:1, user_id: i) if Rails.env.development?
 # end
 
-for i in 1..10
-    Group.create!(owner_id: 1, name: 'group' + i.to_s) if Rails.env.development?
-end
+# for i in 1..10
+#     Group.create!(owner_id: 1, name: 'group' + i.to_s) if Rails.env.development?
+# end
 
 # for i in 1..10
 #     GroupMember.create!(group_id: 1, user_id: i) if Rails.env.development?
