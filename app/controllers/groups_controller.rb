@@ -5,6 +5,9 @@ class GroupsController < ApplicationController
     @group = Group.new
   end
 
+  def new
+  end
+
   def create
     @group = Group.new(group_params.merge(owner_id: current_user.id))
 
