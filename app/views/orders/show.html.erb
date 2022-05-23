@@ -1,5 +1,9 @@
 <p style="color: green"><%= notice %></p>
-
+    <div class="card-header text-center">
+            <h3>
+          <i class="bi bi-card-text"></i> Order Details
+        </h3>
+    </div>
 <%= render @order %>
 
 <div>
@@ -7,4 +11,33 @@
   <%= link_to "Back to orders", orders_path %>
 
   <%= button_to "Destroy this order", @order, method: :delete %>
+</div>
+
+<div class="card mt-2">
+    <table class="table text-center ">
+        <thead class="thead-cusom">
+            <tr>
+            <th scope="col">Person</th>
+            <th scope="col">Item</th>
+            <th scope="col">Amount</th>
+            <th scope="col">Price</th>
+            <th scope="col">Comment</th>
+            <th scope="col" colspan="3">Action</th>
+            </tr>
+        </thead>
+        <tbody id="items_table_body">
+            <% @Items.each do |item| %>
+                <tr id = "item_<%= item.id %>">
+                    <td><%= item.user.full_name %></td>
+                    <td><%= item.item %></td>
+                    <td><%= item.amount %></td>
+                    <td><%= item.price %></td>
+                    <td><%= item.comment %></td>
+                    <%  if item.user.id == current_user.id and @order.status == "Active" %>
+                        <td><%= button_to 'Delete Item', [item.order, item], remote: true, class:"btn btn-danger btn-sm", method: :delete, data: { confirm: "Are you sure?" } %></td>
+                    <% end %>
+                </tr>
+            <% end %>
+        </tbody>
+    </table>
 </div>
