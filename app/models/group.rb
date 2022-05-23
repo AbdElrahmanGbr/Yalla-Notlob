@@ -25,4 +25,4 @@ class Group < ApplicationRecord
     self.group_participants.where(user_id: id_of_member).exists?
   end
 end
-end
+

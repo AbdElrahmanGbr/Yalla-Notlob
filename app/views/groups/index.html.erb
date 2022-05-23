@@ -1,14 +1,22 @@
-<p style="color: green"><%= notice %></p>
+<%= render "form" %>
 
-<h1>Groups</h1>
+<style>
+  .card-custom {
+    background-color: #FF5A01;
+    color: white;
+  }
+  .xy{color:white}
+</style>
 
-<div id="groups">
-  <% @groups.each do |group| %>
-    <%= render group %>
-    <p>
-      <%= link_to "Show this group", group %>
-    </p>
-  <% end %>
-</div>
+<div class="row">
 
-<%= link_to "New group", new_group_path %>
+  <div class="col-sm-4 mb-3 mt-4">
+    <div class="card bg-light">
+      <h3>
+        <div class="card-header card-custom">My Groups</div>
+      </h3>
+      <div class="card-body">
+        <%= render @groups %>
+      </div>
+    </div>
+  </div>
