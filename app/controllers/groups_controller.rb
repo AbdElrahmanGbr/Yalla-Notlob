@@ -31,4 +31,22 @@ class GroupsController < ApplicationController
     @group = Group.new
   end
 
+  def create_user
+    @member = User.find(params[:user])
+    @member = GroupParticipant.new({ "user_id" => @member.id, "group_id" => params[:group_id] })
+    if @member.save
+      @member = User.find(params[:user])
+      respond_to do |format|
+        format.js { render partial: "javascripts/groups/create_user" }
+      end
+    end
+  end
+
+  def destroy_user
+    GroupParticipant.delete_by(user_id: params[:user_id], group_id: params[:group_id])
+    @member_id = params[:user_id]
+    respond_to do |format|
+      format.js { render partial: "javascripts/groups/destroy_user" }
+    end
+  end
 end
