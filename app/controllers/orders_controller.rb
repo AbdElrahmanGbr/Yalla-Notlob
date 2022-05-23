@@ -23,7 +23,6 @@ class OrdersController < ApplicationController
       render :new
     end
   end
-
   def finish
     @order = Order.find(params[:id])
     @Items = OrderMember.joins(:order)
