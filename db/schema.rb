@@ -11,13 +11,13 @@
 # It's strongly recommended that you check this file into your version control system.
 
 ActiveRecord::Schema[7.0].define(version: 2022_05_21_042415) do
-  create_table "active_admin_comments", force: :cascade do |t|
+  create_table "active_admin_comments", charset: "utf8mb4", collation: "utf8mb4_0900_ai_ci", force: :cascade do |t|
     t.string "namespace"
     t.text "body"
     t.string "resource_type"
-    t.integer "resource_id"
+    t.bigint "resource_id"
     t.string "author_type"
-    t.integer "author_id"
+    t.bigint "author_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["author_type", "author_id"], name: "index_active_admin_comments_on_author"
@@ -25,7 +25,7 @@ ActiveRecord::Schema[7.0].define(version: 2022_05_21_042415) do
     t.index ["resource_type", "resource_id"], name: "index_active_admin_comments_on_resource"
   end
 
-  create_table "admin_users", force: :cascade do |t|
+  create_table "admin_users", charset: "utf8mb4", collation: "utf8mb4_0900_ai_ci", force: :cascade do |t|
     t.string "email", default: "", null: false
     t.string "encrypted_password", default: "", null: false
     t.string "reset_password_token"
@@ -37,7 +37,7 @@ ActiveRecord::Schema[7.0].define(version: 2022_05_21_042415) do
     t.index ["reset_password_token"], name: "index_admin_users_on_reset_password_token", unique: true
   end
 
-  create_table "friendships", force: :cascade do |t|
+  create_table "friendships", charset: "utf8mb4", collation: "utf8mb4_0900_ai_ci", force: :cascade do |t|
     t.integer "friend_id"
     t.integer "user_id"
     t.datetime "created_at", null: false
@@ -45,23 +45,23 @@ ActiveRecord::Schema[7.0].define(version: 2022_05_21_042415) do
     t.index ["friend_id", "user_id"], name: "index_friendships_on_friend_id_and_user_id", unique: true
   end
 
-  create_table "groups", force: :cascade do |t|
-    t.integer "owner_id", null: false
+  create_table "groups", charset: "utf8mb4", collation: "utf8mb4_0900_ai_ci", force: :cascade do |t|
+    t.bigint "owner_id", null: false
     t.string "name"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["owner_id"], name: "index_groups_on_owner_id"
   end
 
-  create_table "groups_users", id: false, force: :cascade do |t|
-    t.integer "user_id", null: false
-    t.integer "group_id", null: false
+  create_table "groups_users", id: false, charset: "utf8mb4", collation: "utf8mb4_0900_ai_ci", force: :cascade do |t|
+    t.bigint "user_id", null: false
+    t.bigint "group_id", null: false
     t.index ["user_id", "group_id"], name: "index_groups_users_on_user_id_and_group_id"
   end
 
-  create_table "invited_members", force: :cascade do |t|
-    t.integer "order_id", null: false
-    t.integer "user_id", null: false
+  create_table "invited_members", charset: "utf8mb4", collation: "utf8mb4_0900_ai_ci", force: :cascade do |t|
+    t.bigint "order_id", null: false
+    t.bigint "user_id", null: false
     t.boolean "joind"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
@@ -69,9 +69,9 @@ ActiveRecord::Schema[7.0].define(version: 2022_05_21_042415) do
     t.index ["user_id"], name: "index_invited_members_on_user_id"
   end
 
-  create_table "order_members", force: :cascade do |t|
-    t.integer "order_id", null: false
-    t.integer "user_id", null: false
+  create_table "order_members", charset: "utf8mb4", collation: "utf8mb4_0900_ai_ci", force: :cascade do |t|
+    t.bigint "order_id", null: false
+    t.bigint "user_id", null: false
     t.string "comment"
     t.string "item", null: false
     t.integer "amount", null: false
@@ -82,8 +82,8 @@ ActiveRecord::Schema[7.0].define(version: 2022_05_21_042415) do
     t.index ["user_id"], name: "index_order_members_on_user_id"
   end
 
-  create_table "orders", force: :cascade do |t|
-    t.integer "user_id", null: false
+  create_table "orders", charset: "utf8mb4", collation: "utf8mb4_0900_ai_ci", force: :cascade do |t|
+    t.bigint "user_id", null: false
     t.string "resturant_name"
     t.string "mealtype"
     t.string "menu_img"
@@ -93,11 +93,11 @@ ActiveRecord::Schema[7.0].define(version: 2022_05_21_042415) do
     t.index ["user_id"], name: "index_orders_on_user_id"
   end
 
-  create_table "users", force: :cascade do |t|
+  create_table "users", charset: "utf8mb4", collation: "utf8mb4_0900_ai_ci", force: :cascade do |t|
     t.string "full_name", default: ""
     t.string "email", default: "", null: false
     t.string "encrypted_password", default: "", null: false
-    t.text "image", default: ""
+    t.text "image"
     t.string "reset_password_token"
     t.datetime "reset_password_sent_at"
     t.datetime "remember_created_at"
