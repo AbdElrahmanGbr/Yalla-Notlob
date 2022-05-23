@@ -7,5 +7,5 @@ Rails.application.routes.draw do
 
   # Defines the root path route ("/")
   root "orders#index"
-  `root 'pages#myaccount'`
+  # root 'pages#myaccount'
 end
