@@ -14,7 +14,7 @@ Devise.setup do |config|
   # confirmation, reset password and unlock tokens in the database.
   # Devise will use the `secret_key_base` as its `secret_key`
   # by default. You can change it below and use your own secret key.
-  # config.secret_key = '88ffff9f8516c3a3a77be11d7e13c95abb0c2eff50dc43d71fcdc4bf5bb544c1316a1f7e36e1a9c8542020aa27e367c0c64e1c3fe2fa4328a7624b59a9a8f928'
+  # config.secret_key = 'abe709e5678ea6a404a1f235504393c93fb5e5cfd6a7d52fd5a6543696b0b601fba69e317c7cc73d7e7b71da1c00c1f9f7e7ba6981e4a23d3a5ff0c8c6308a6a'
 
   # ==> Controller configuration
   # Configure the parent class to the devise controllers.
@@ -126,7 +126,7 @@ Devise.setup do |config|
   config.stretches = Rails.env.test? ? 1 : 12
 
   # Set up a pepper to generate the hashed password.
-  # config.pepper = '0f0476c4cfb1c8617312ad0430fabcd55a05fd2220b0c4f2a7bfc2993b188ed54471b04f57564fd5b8f9d552ea101d8ed995a11c9de4b001e1c3088cf5117716'
+  # config.pepper = '9d17e4c8e982027f95e7f5369a990cbaa774cd98c66d39798ebe702549d00ebacea19818b8d66c22635558eb7d07f8ce45d30c2da0615e83badb92c00ecea894'
 
   # Send a notification to the original email when the user's email is changed.
   # config.send_email_changed_notification = false
@@ -273,6 +273,13 @@ Devise.setup do |config|
   # up on your models and hooks.
   # config.omniauth :github, 'APP_ID', 'APP_SECRET', scope: 'user,public_repo'
 
+  # Facebook auth configuration
+  
+  config.omniauth :facebook, ENV['FACEBOOK_APP_ID'], ENV['FACEBOOK_APP_SECRET'], {scope: 'email', info_fields: 'email,name,verified,gender,link'}
+ 
+  # Gmail auth configuration
+  config.omniauth :google_oauth2, ENV['GMAIL_APP_ID'], ENV['GMAIL_APP_SECRET'], scope: 'userinfo.email,userinfo.profile', skip_jwt: true
+
   # ==> Warden configuration
   # If you want to use other strategies, that are not supported by Devise, or
   # change the failure app, you can configure them inside the config.warden block.
@@ -301,6 +308,7 @@ Devise.setup do |config|
   #
   # ActiveSupport.on_load(:devise_failure_app) do
   #   include Turbolinks::Controller
+  
   # end
 
   # ==> Configuration for :registerable
